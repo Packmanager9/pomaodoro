@@ -2992,8 +2992,11 @@ for(let t = 0;t<60;t++){
         // gamepadAPI.update() //checks for button presses/stick movement on the connected controller)
         // // game code goes here
         
-        let time = Date.now()
+        let time = Date.now() //+ (60000)*24.8
         pomao.draw()
+        if(Math.floor(30-(Math.abs(time-starttime)/60000)) < 0){
+            starttime = Date.now()
+        }
         // if(time-starttime < (60*1000*150)){
             if(time-starttime < (60*1000*25)){
                 canvas_context.fillStyle = "#FFAAAA";
@@ -3032,9 +3035,7 @@ for(let t = 0;t<60;t++){
                 let sec = Math.floor(60-((Math.abs(time-starttime)%60000)/1000))%60
                 canvas_context.drawImage(numimgs[Math.max(min,0)],0,0,numimgs[Math.max(min,0)].width, numimgs[min].height, 175,585, 50,50 )
                 canvas_context.drawImage(numimgs[Math.max(sec,0)],0,0,numimgs[Math.max(sec,0)].width, numimgs[sec].height, 215,585, 50,50 )
-                if(Math.floor(30-(Math.abs(time-starttime)/60000)) <= 0){
-                    starttime = Date.now()
-                }
+            
             }
         // }
 
